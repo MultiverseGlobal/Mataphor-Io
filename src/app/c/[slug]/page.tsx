@@ -1,6 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
 import { notFound } from 'next/navigation';
 import { GlassCard } from '@/components/ui/GlassCard';
+import { GlassButton } from '@/components/ui/GlassButton';
 import { Brain, Zap, Clock, ExternalLink, Repeat2 } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 
