@@ -9,7 +9,7 @@ import {
     ArrowRightLeft
 } from 'lucide-react';
 import { useState } from 'react';
-import { createBrowserClient } from '@/lib/supabase';
+import { createBrowserClient } from '@/lib/supabase-client';
 import { useRouter } from 'next/navigation';
 import { TransferAccordion } from '@/components/sidebar/TransferAccordion';
 

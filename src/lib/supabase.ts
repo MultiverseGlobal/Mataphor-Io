@@ -3,14 +3,6 @@ import { createServerClient as createSSRClient, type CookieOptions } from '@supa
 import { cookies } from 'next/headers';
 import type { Database } from './database.types';
 
-// Browser client for client components
-export function createBrowserClient() {
-  return createClient<Database>(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-  );
-}
-
 // Server client for server components and API routes
 export async function createServerClient() {
   const cookieStore = await cookies();
