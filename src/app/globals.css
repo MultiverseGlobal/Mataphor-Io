@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* "Antigravity" Palette - Deep Void & Starlight */
+    --background: 240 10% 4%;
+    /* #09090b - Zinc 950 (Void) */
+    --foreground: 0 0% 98%;
+    /* #fafafa - Zinc 50 */
+
+    --card: 240 10% 6%;
+    /* #0f0f11 */
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 4%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    /* White (Linear Style) */
+    --primary-foreground: 240 5.9% 10%;
+
+    --secondary: 240 3.7% 15.9%;
+    /* #27272a */
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    /* Subtle dark borders */
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+
+    --radius: 0.75rem;
+  }
+
+  /* Linear-style font settings */
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
+    /* Smart clean coding ligatures */
+  }
+}
+
+@layer utilities {
+
+  /* "Antigravity" Effects */
+  .floating {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .glass-panel {
+    @apply bg-zinc-900/80 backdrop-blur-xl border border-white/10 shadow-2xl;
+  }
+
+  .linear-border {
+    @apply border border-white/10 transition-colors hover:border-white/20;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}

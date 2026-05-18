@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Metaphor IO</title>
+  <style>
+    :root {
+      --bg: #09090b;
+      --card-bg: #18181b;
+      --accent: #3b82f6;
+      --accent-purple: #a855f7;
+      --text: #fafafa;
+      --text-muted: #a1a1aa;
+      --border: #27272a;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 350px;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+    }
+
+    .container { padding: 16px; display: flex; flex-direction: column; gap: 16px; }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      background: linear-gradient(to right, #3b82f6, #a855f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-title {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+
+    .context-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .context-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+    }
+
+    .platform-badge {
+      background: rgba(255,255,255,0.05);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--text-muted);
+    }
+
+    .context-summary {
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 1.4;
+      color: var(--text);
+    }
+
+    .meta-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .meta-tag {
+      font-size: 10px;
+      background: rgba(59, 130, 246, 0.1);
+      color: #60a5fa;
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid rgba(59, 130, 246, 0.2);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-primary:hover { background: #2563eb; }
+
+    .btn-secondary {
+      background: var(--border);
+      color: var(--text);
+    }
+
+    .btn-secondary:hover { background: #3f3f46; }
+
+    .empty-state {
+      padding: 24px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 13px;
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+    }
+
+    .status {
+      font-size: 11px;
+      color: #10b981;
+      text-align: center;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">METAPHOR IO</div>
+      <a href="http://localhost:3000/dashboard" target="_blank" style="font-size: 11px; color: var(--text-muted); text-decoration: none;">Dashboard</a>
+    </div>
+
+    <div id="last-context-section">
+      <div class="section-title">Last Captured Context</div>
+      <div id="context-container">
+        <!-- Loaded dynamically -->
+        <div class="empty-state">No context captured yet.</div>
+      </div>
+    </div>
+
+    <div id="actions" style="display: none;">
+      <button id="import-btn" class="btn btn-primary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 10 4 15 9 20"></polyline><path d="M20 4v7a4 4 0 0 1-4 4H4"></path></svg>
+        Import to Current AI
+      </button>
+    </div>
+
+    <div id="status-msg" class="status">Context imported!</div>
+
+    <div style="border-top: 1px solid var(--border); margin: 4px 0;"></div>
+
+    <div>
+      <div class="section-title">Quick Capture</div>
+      <button id="dashboard-btn" class="btn btn-secondary">
+        Open Context Vault
+      </button>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
