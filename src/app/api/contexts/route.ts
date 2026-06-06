@@ -5,7 +5,18 @@ import { api } from "@/../convex/_generated/api";
 import { SemanticRouter } from "@/lib/agents/SemanticRouter";
 
 const router = new SemanticRouter();
-const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
+
+let convexInstance: ConvexHttpClient | null = null;
+function getConvex() {
+  if (!convexInstance) {
+    const url = process.env.NEXT_PUBLIC_CONVEX_URL;
+    if (!url) {
+      throw new Error("NEXT_PUBLIC_CONVEX_URL is not set");
+    }
+    convexInstance = new ConvexHttpClient(url);
+  }
+  return convexInstance;
+}
 
 export async function POST(request: Request) {
   try {
@@ -16,6 +27,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: false, error: "Unauthenticated" }, { status: 401 });
     }
 
+    const convex = getConvex();
     convex.setAuth(token);
 
     const body = await request.json();
