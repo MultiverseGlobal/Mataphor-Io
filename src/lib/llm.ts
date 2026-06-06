@@ -1,8 +1,15 @@
 import OpenAI from "openai";
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+let openai: OpenAI | null = null;
+
+function getOpenAI() {
+  if (!openai) {
+    openai = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY,
+    });
+  }
+  return openai;
+}
 
 export async function classifyIntent(input: string) {
   if (!process.env.OPENAI_API_KEY) {
@@ -22,7 +29,7 @@ export async function classifyIntent(input: string) {
     return { type: 'Inbox', summary: 'General conversation capture', destination: 'Notion / Inbox' };
   }
 
-  const response = await openai.chat.completions.create({
+  const response = await getOpenAI().chat.completions.create({
     model: "gpt-4o-mini",
     messages: [
       {
