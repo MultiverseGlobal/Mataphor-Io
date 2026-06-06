@@ -8,6 +8,7 @@ export interface AgentResult {
   output: string;
   actions?: AgentAction[];
   metadata?: Record<string, any>;
+  error?: string;
 }
 
 export interface AgentRuntime {

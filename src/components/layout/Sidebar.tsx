@@ -9,19 +9,19 @@ import {
     ArrowRightLeft
 } from 'lucide-react';
 import { useState } from 'react';
-import { createBrowserClient } from '@/lib/supabase-client';
 import { useRouter } from 'next/navigation';
-import { TransferAccordion } from '@/components/sidebar/TransferAccordion';
+import { useAuthActions } from '@convex-dev/auth/react';
+// import { TransferAccordion } from '@/components/sidebar/TransferAccordion';
 
 export function Sidebar() {
     const pathname = usePathname();
     const router = useRouter();
-    const supabase = createBrowserClient();
+    const { signOut } = useAuthActions();
     const [sourceAI, setSourceAI] = useState('ChatGPT');
     const [destAI, setDestAI] = useState('Claude');
 
     const handleSignOut = async () => {
-        await supabase.auth.signOut();
+        await signOut();
         router.push('/');
     };
 
@@ -77,7 +77,7 @@ export function Sidebar() {
             </div>
 
             {/* Accordion Workflow */}
-            <TransferAccordion />
+            {/* <TransferAccordion /> */}
 
             {/* Footer / User */}
             <div className="p-3 border-t border-zinc-900 bg-black mt-auto">

@@ -1,7 +1,13 @@
 # Dependencies
 /node_modules
+packages/*/node_modules
 /.pnp
 .pnp.js
+
+# Build artifacts
+packages/*/dist
+tsconfig.tsbuildinfo
+convex_local_storage/
 
 # Testing
 /coverage

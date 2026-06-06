@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowRight, Zap, Shield, Repeat2, Brain, Fingerprint, Sparkles } from 'lucide-react';
+import { ArrowRight, Zap, Shield, Repeat2, Brain, Fingerprint, Sparkles, Share2 } from 'lucide-react';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { GlassButton } from '@/components/ui/GlassButton';
 
